@@ -1,0 +1,15 @@
+//
+// Prefix header for all source files of the 'Predator' target in the 'Predator' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+  //  #include <opencv2/opencv.hpp>
+  //  #import <UIKit/UIKit.h>
+ //   #import <Foundation/Foundation.h>
+#endif

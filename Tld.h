@@ -30,7 +30,7 @@ public:
      \param WIDTH_STEPS width step
      \param HEIGHT_STEPS height step
      */
-    Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, int nFEAT, double MIN_FEATURE_SCALE, double MAX_FEATURE_SCALE, int WIDTH_STEPS, int HEIGHT_STEPS, bool blur = false) ;
+    Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, int nFEAT, double MIN_FEATURE_SCALE, double MAX_FEATURE_SCALE, int WIDTH_STEPS, int HEIGHT_STEPS, bool is_video = false , bool blur = false) ;
     
     
     //!

@@ -1,4 +1,4 @@
-//
+  //
 //  Tld.mm
 //  Predator
 //
@@ -23,7 +23,7 @@ static bool is_initialized = 0;
 
 static float initBBWidth;
 static float initBBHeight;
-
+static IplImage *img2 = 0;
 int frameHeight;
 int frameWidth;
 
@@ -34,8 +34,8 @@ double confidence;
 static Classifier *classifier;
 static Tracker *tracker;
 static TldDetector *detector;
-
-
+IplImage *firstPatch;
+bool video = false;
 /*
  size: is the size of the frame
  frame: is the first frame
@@ -43,7 +43,10 @@ static TldDetector *detector;
  [x, y, width, height]
  
  */
-Tld::Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, int nFEAT, double MIN_FEATURE_SCALE, double MAX_FEATURE_SCALE, int WIDTH_STEPS, int HEIGHT_STEPS, bool blur) {
+
+
+Tld::Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, int nFEAT, double MIN_FEATURE_SCALE, double MAX_FEATURE_SCALE, int WIDTH_STEPS, int HEIGHT_STEPS, bool is_video, bool blur) {
+    video = is_video;
     srand(0);
     printf("Trees: %d, Features: %d, Min scale: %lf, Max scale: %lf, Width steps: %d, Height steps: %d\n",nTREES, nFEAT, MIN_FEATURE_SCALE, MAX_FEATURE_SCALE, WIDTH_STEPS, HEIGHT_STEPS);
     frameWidth = width;
@@ -53,6 +56,25 @@ Tld::Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, in
     TldImage *firstFrame = new TldImage();
     firstFrame->createFromImage(frame, width, height,blur);
     IplImage *firstFrameIplImage = imageFromChar(frame, frameSize, frameWidth, frameHeight);
+    cvSetImageROI(firstFrameIplImage, cvRect(bb[0], bb[1], bb[2],bb[3]));
+    /* create destination image
+     Note that cvGetSize will return the width and the height of ROI */
+    img2 = cvCreateImage(cvGetSize(firstFrameIplImage),
+                                   firstFrameIplImage->depth,
+                                   firstFrameIplImage->nChannels);
+    
+    /* copy subimage */
+    cvCopy(firstFrameIplImage, img2, NULL);
+    /* always reset the Region of Interest */
+    cvResetImageROI(firstFrameIplImage);
+    IplImage *firstFrameIplImgPatch = cvCreateImage(cvSize(15,15),  
+                                                    firstFrameIplImage->depth,
+                                                    firstFrameIplImage->nChannels);
+    cvResize(img2, firstFrameIplImgPatch);
+    firstPatch = firstFrameIplImgPatch;
+    cvReleaseImage(&img2);
+   // cvReleaseImage(&firstFrameIplImage);
+    
     initBBWidth = (float)bb[2];
     initBBHeight = (float)bb[3];
     confidence = 1.0f;
@@ -89,12 +111,12 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
     
     double *tbb;
     vector<double *> *dbbs;
-    printf("Tracking: %lf, Reinit: %lf, Learning: %lf\n",MIN_TRACKING_CONF, MIN_REINIT_CONF, MIN_LEARNING_CONF);
+   // printf("Tracking: %lf, Reinit: %lf, Learning: %lf\n",MIN_TRACKING_CONF, MIN_REINIT_CONF, MIN_LEARNING_CONF);
     
     if (confidence > MIN_TRACKING_CONF) {
         tbb = tracker->track(nextFrame, nextFrameIntImg, bb);
-        //float p = classifier->classify(nextFrameIntImg,  tbb[0],tbb[1],tbb[2],tbb[3]);
-        //  printf("Classifier: %lf\n",p);
+        float p = classifier->classify(nextFrameIntImg,  tbb[0],tbb[1],tbb[2],tbb[3]);
+        printf("Classifier: %lf\n",p);
         if (tbb[4] > MIN_TRACKING_CONF)
 		{
 			dbbs = detector->detect(nextFrameIntImg, tbb);
@@ -121,17 +143,62 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
     
     double dbbMaxConf = 0.0f;
     int dbbMaxConfIndex = -1;
-    
+    float dbb_conf = 0;
+    float *nccs;
+    if (dbbs->size() != 0) {
+        nccs = (float*)malloc(sizeof(float)* dbbs->size());
+    }
     for (int i = 0; i < dbbs->size(); i++) {
         double dbbConf = dbbs->at(i)[4];
+        cvSetImageROI(nextFrame, cvRect(dbbs->at(i)[0], dbbs->at(i)[1], dbbs->at(i)[2],dbbs->at(i)[3]));
+        IplImage *dbb_img;
+        dbb_img = cvCreateImage(cvGetSize(nextFrame),
+                                nextFrame->depth,
+                                nextFrame->nChannels);
         
-        if (dbbConf > dbbMaxConf) {
-            dbbMaxConf = dbbConf;
+        cvCopy(nextFrame, dbb_img, NULL);
+        cvResetImageROI(nextFrame);
+        IplImage *dbb_patch = cvCreateImage(cvSize(15,15),  
+                                            nextFrame->depth,
+                                            nextFrame->nChannels);
+        cvResize(dbb_img, dbb_patch);
+        
+        cvReleaseImage(&dbb_img);
+        
+        dbb_conf = ccorr_normed((unsigned char*)firstPatch->imageData, (unsigned char*)dbb_patch->imageData,15*15);
+        nccs[i] = dbb_conf;
+        cvReleaseImage(&dbb_patch);
+        cvSetImageROI(nextFrame, cvRect(tbb[0], tbb[1], tbb[2],tbb[3]));
+
+        if (dbb_conf > dbbMaxConf && dbbConf > 0.6) {
+            dbbMaxConf = dbb_conf;
             dbbMaxConfIndex = i;
         }
+     }
+    
+    float tbb_conf;
+    if ( tbb[4] != 0 && tbb[2] >=15 && tbb[3] >=15) {
+        IplImage *tbb_img = cvCreateImage(cvGetSize(nextFrame),
+                             nextFrame->depth,
+                             nextFrame->nChannels);
+        cvCopy(nextFrame, tbb_img, NULL);
+        IplImage *tbb_patch = cvCreateImage(cvSize(15,15),  
+                                              nextFrame->depth,
+                                              nextFrame->nChannels);
+        cvResize(tbb_img, tbb_patch);
+        cvReleaseImage(&tbb_img);
+        
+        //printf("My best confidence: %lf - NCC: %lf\n",dbbMaxConf,dbb_conf);
+        tbb_conf = ccorr_normed((unsigned char*)firstPatch->imageData, (unsigned char*)tbb_patch->imageData,15*15);
+        cvReleaseImage(&tbb_patch);
+       // printf("My tbb confidence: %lf\n",tbb_conf);
+    } else {
+        tbb_conf = 0;
     }
-    printf("My best confidence: %lf\n",dbbMaxConf);
-    if (dbbMaxConf > MIN_REINIT_CONF && tbb[4] < 0.2) {
+    printf("Detector best confidence: %lf - NCC: %lf\n",dbbMaxConf,dbb_conf);
+    printf("Tracker best confidence: %lf - NCC: %lf\n",tbb[4],tbb_conf);
+    
+    if (dbbMaxConf > MIN_REINIT_CONF && dbbMaxConf > tbb[4] && dbb_conf > (video ? 0.943 :0.95) && dbb_conf > tbb_conf) {
         delete tbb;
         tbb = new double[5];
         double *dbb = dbbs->at(dbbMaxConfIndex);
@@ -140,33 +207,30 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
         tbb[2] = dbb[2];
         tbb[3] = dbb[3];
         tbb[4] = dbb[4];
-    } else if (tbb[4] > 0.3 && confidence > MIN_LEARNING_CONF) {
-        printf("learning new stuf..\n");
+    } else if (tbb[4] > MIN_TRACKING_CONF && confidence > MIN_LEARNING_CONF && tbb_conf > (video ? 0.94 :0.97)) {
         for (int i = 0; i < dbbs->size(); i++) {
             
             double *dbb = dbbs->at(i);
             
-            if (dbb[5] == 1) {
+            if (dbb[5] == 1 && nccs[i] > 0.91) {
                 printf("Learning positive patch!\n");
                 classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 1);
             }
-            else if (dbb[5] == 0) {
-                printf("Learning negative patch :(\n");
-                classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 0);
+            else if (dbb[5] == 0 && nccs[i] < 0.999 ) {
+               // printf("Learning negative patch :(\n");
+               classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 0);
             }
         }
+        classifier->train(nextFrameIntImg,  (int)tbb[0], (int)tbb[1], (int)tbb[2], (int)tbb[3], 1);
         
-    } else if (dbbMaxConf > tbb[4] && dbbMaxConf  > 0.12) {
-        //  double *dbb = dbbs->at(dbbMaxConfIndex);
-        
-        //tbb[0] = dbb[0];
-        //tbb[1] = dbb[1];
-        //tbb[2] = dbb[2];
-        //tbb[3] = dbb[3];
-        //tbb[4] = dbb[4];
-        
+    } else {
+        tbb = new double[5];
+        tbb[0] = 0;
+        tbb[1] = 0;
+        tbb[2] = 0;
+        tbb[3] = 0;
+        tbb[4] = MIN_TRACKING_CONF;
     }
-    
     confidence = tbb[4];
     
     

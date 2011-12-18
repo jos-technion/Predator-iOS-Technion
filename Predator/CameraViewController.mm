@@ -30,14 +30,14 @@ static int nFEAT     = 13;
 static float MIN_FEATURE_SCALE = 0.1f;
 static float MAX_FEATURE_SCALE = 0.5f;
 
-static double MIN_LEARNING_CONF =  0.12f;
+static double MIN_LEARNING_CONF =  0.2f;
 
-static double MIN_REINIT_CONF   =  0.35f;
+static double MIN_REINIT_CONF   =  0.6f;
 
-static double MIN_TRACKING_CONF =  0.05f;
+static double MIN_TRACKING_CONF =  0.12f;
 
-static int WIDTH_STEPS          = 30;
-static int HEIGHT_STEPS         = 30;
+static int WIDTH_STEPS          = 60;
+static int HEIGHT_STEPS         = 60;
 static bool show_fps             = true;
 static bool use_face_detection = false;
 static void screenToBbox(double* screen, double* bbox) {

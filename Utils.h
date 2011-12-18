@@ -83,6 +83,18 @@ void free_matrix(double **array,  int n);
  */
 void trainClassifier(TldImage *frame, double *tbb, Classifier * classifier);
 
+//!
+/*!
+ \param f1
+ \param f2
+ \param numDim
+ \return
+ */
+double ccorr_normed(unsigned char *f1,unsigned char *f2,int numDim) ;
+
  #endif
+
+
+
 
 

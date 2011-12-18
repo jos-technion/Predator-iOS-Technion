@@ -129,7 +129,7 @@ void trainClassifier(TldImage *frame, double *tbb, Classifier * classifier) {
         float iterationsY = 40;
         int incY = (int)floor((float)(maxY - minY) / (iterationsY - 1.0f));
         if(incY==0)incY=1;
-        float pmax = 0;
+        //float pmax = 0;
         // Loop through all bounding-box top-left x-positions
         for (int x = minX; x <= maxX; x += incX) {
             
@@ -147,10 +147,8 @@ void trainClassifier(TldImage *frame, double *tbb, Classifier * classifier) {
                 float overlap = TldDetector::bbOverlap(tbb, bb);
                 if (overlap ==0) {
                     float p = classifier->classify(frame, x, y, currentWidth, currentHeight);
-                    if ( p > pmax ) 
-                        pmax = p;
                     if(p > 0.15) {
-                        classifier->train(frame,  x, y, currentWidth, currentHeight, 0);
+                         classifier->train(frame,  x, y, currentWidth, currentHeight, 0);
                          countNeg++;
                     }
                 } else if (overlap > MIN_LEARNING_OVERLAP) {
@@ -162,7 +160,8 @@ void trainClassifier(TldImage *frame, double *tbb, Classifier * classifier) {
             }
         }
     }
-    countNeg++;
+    countPos++;
+    printf("%d\n",countPos-1);
 }
 
 
@@ -235,3 +234,21 @@ void free_matrix(double **array, int n) {
         free(array[i]);
     }
 }
+
+
+// correlation normalized
+double ccorr_normed(unsigned char *f1,unsigned char *f2,int numDim) {
+	double corr = 0;
+	double norm1 = 0;
+	double norm2 = 0;
+    
+	for (int i = 0; i<numDim; i++) {
+		corr += f1[i]*f2[i];
+		norm1 += f1[i]*f1[i];
+		norm2 += f2[i]*f2[i];
+	}
+	// normalization to <0,1>
+	return (corr / sqrt(norm1*norm2) + 1) / 2.0;
+}
+
+

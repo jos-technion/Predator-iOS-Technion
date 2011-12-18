@@ -11,7 +11,7 @@
 using namespace std;
 
 
-#define MIN_LEARNING_OVERLAP 0.6
+#define MIN_LEARNING_OVERLAP 0.7
 
 
 class TldDetector {

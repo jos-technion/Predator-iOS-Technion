@@ -16,6 +16,8 @@ Classifier::Classifier(int fernNum, int nodeNum) {
 
 void Classifier::train(TldImage *image,  int patchX, int patchY, int patchW, int patchH, int patchClass) {
     // Train all the ferns
+    if(patchClass == 0)
+        return;
     for (int i = 0; i < fernCount; i++) {
         ferns[i]->train(image, patchX, patchY, patchW, patchH, patchClass);
     }

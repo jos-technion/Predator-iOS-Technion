@@ -151,7 +151,7 @@ PredatorViewController *mymainViewController;
     [self.imageView setImage: img2];
  
     output_bbox[0] = 0; output_bbox[1] = 0; output_bbox[2] = 0; output_bbox[3] = 0;
-    tld2 = new Tld(470, 310, baseAddressGray, bbox, nTREES, nFEATS, MIN_FEATURE_SCALE, MAX_FEATURE_SCALE , WIDTH_STEPS, HEIGHT_STEPS, true);
+    tld2 = new Tld(470, 310, baseAddressGray, bbox, nTREES, nFEATS, MIN_FEATURE_SCALE, MAX_FEATURE_SCALE , WIDTH_STEPS, HEIGHT_STEPS, true, true);
     
     self.rect.layer.borderColor = [UIColor redColor].CGColor;
     self.rect.layer.borderWidth = 3.0f;
@@ -216,7 +216,7 @@ PredatorViewController *mymainViewController;
                                                selector:@selector(startVideo)
                                                userInfo:nil
                                                 repeats:YES];
-        if (i==100) [timer invalidate];
+        if (i==70) [timer invalidate];
         
    }
     

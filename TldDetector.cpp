@@ -117,7 +117,7 @@ vector<double *> *TldDetector::detect(TldImage *frame, double *tbb) {
             for (int y = minY; y <= maxY; y += incY) {
                 // Classify the patch
                 float p = classifier->classify(frame,x, y, currentWidth, currentHeight);
-                
+               // printf("Classifing as: %lf\n",p);
                 // Store the patch data in an array
                 // [x, y, width, height, confidence, overlapping], where
                 // overlapping is 1 if the bounding-box overlaps with the
@@ -138,7 +138,7 @@ vector<double *> *TldDetector::detect(TldImage *frame, double *tbb) {
                 // if it overlaps the bb or, the classifier has a confidence of 0.15 that it positive,
                 // we return those patches for the learning process.
 
-                if (p > 0.15f || bb[5] == 1) {
+                if (p > 0.3f || bb[5] == 1) {
                     //if(p > 0.5f || bb[5] == 1) {
                     bbs->push_back(bb);
                 } else {
@@ -152,4 +152,5 @@ vector<double *> *TldDetector::detect(TldImage *frame, double *tbb) {
 
 
 TldDetector::~TldDetector() {
+    
 }

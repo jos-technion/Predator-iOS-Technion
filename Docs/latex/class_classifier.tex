@@ -1,0 +1,108 @@
+\hypertarget{class_classifier}{\section{\-Classifier \-Class \-Reference}
+\label{class_classifier}\index{\-Classifier@{\-Classifier}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_classifier_ac54d51dcb12fb03418626fa6457485dc}{\-Classifier} (int fern\-Num, int node\-Num)
+\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_classifier_a29063c138f375446683494ba704336f4}{train} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$image, int patch\-X, int patch\-Y, int patch\-W, int patch\-H, int patch\-Class)
+\begin{DoxyCompactList}\small\item\em \-Trains all ferns in the forest with a single training patch. \end{DoxyCompactList}\item 
+float \hyperlink{class_classifier_a24977919fcadbac825526538c59eb481}{classify} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$image, int patch\-X, int patch\-Y, int patch\-W, int patch\-H)
+\begin{DoxyCompactList}\small\item\em \-Classifies a given patch. \end{DoxyCompactList}\item 
+\hypertarget{class_classifier_a9f5173e79559e37b9f08492da5d14d0b}{\hyperlink{class_classifier_a9f5173e79559e37b9f08492da5d14d0b}{$\sim$\-Classifier} (void)}\label{class_classifier_a9f5173e79559e37b9f08492da5d14d0b}
+
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_classifier_ac54d51dcb12fb03418626fa6457485dc}{\index{\-Classifier@{\-Classifier}!\-Classifier@{\-Classifier}}
+\index{\-Classifier@{\-Classifier}!Classifier@{\-Classifier}}
+\subsubsection[{\-Classifier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Classifier\-::\-Classifier} (
+\begin{DoxyParamCaption}
+\item[{int}]{fern\-Num, }
+\item[{int}]{node\-Num}
+\end{DoxyParamCaption}
+)}}\label{class_classifier_ac54d51dcb12fb03418626fa6457485dc}
+
+
+\-Constructor. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em fern\-Num} & the number of ferns to create \\
+\hline
+{\em node\-Num} & number of nodes to create in each fern \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_classifier_a24977919fcadbac825526538c59eb481}{\index{\-Classifier@{\-Classifier}!classify@{classify}}
+\index{classify@{classify}!Classifier@{\-Classifier}}
+\subsubsection[{classify}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf \-Classifier\-::classify} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{image, }
+\item[{int}]{patch\-X, }
+\item[{int}]{patch\-Y, }
+\item[{int}]{patch\-W, }
+\item[{int}]{patch\-H}
+\end{DoxyParamCaption}
+)}}\label{class_classifier_a24977919fcadbac825526538c59eb481}
+
+
+\-Classifies a given patch. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em image} & image to take the test patch from \\
+\hline
+{\em patch\-X} & patch top-\/left x-\/position \\
+\hline
+{\em patch\-Y} & patch top-\/left y-\/position \\
+\hline
+{\em patch\-W} & patch width \\
+\hline
+{\em patch\-H} & patch height \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the posterior likelihood that the patch is positive. 
+\end{DoxyReturn}
+\hypertarget{class_classifier_a29063c138f375446683494ba704336f4}{\index{\-Classifier@{\-Classifier}!train@{train}}
+\index{train@{train}!Classifier@{\-Classifier}}
+\subsubsection[{train}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Classifier\-::train} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{image, }
+\item[{int}]{patch\-X, }
+\item[{int}]{patch\-Y, }
+\item[{int}]{patch\-W, }
+\item[{int}]{patch\-H, }
+\item[{int}]{patch\-Class}
+\end{DoxyParamCaption}
+)}}\label{class_classifier_a29063c138f375446683494ba704336f4}
+
+
+\-Trains all ferns in the forest with a single training patch. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em image,\-:} & image to take the training patch from \\
+\hline
+{\em patch\-X} & patch top-\/left x-\/position \\
+\hline
+{\em patch\-Y} & patch top-\/left y-\/position \\
+\hline
+{\em patch\-W} & patch width \\
+\hline
+{\em patch\-H} & patch height \\
+\hline
+{\em patch\-Class} & 0 if the patch is negative, 1 if the patch is positive \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Classifier.\-h\item 
+\-Classifier.\-cpp\end{DoxyCompactItemize}

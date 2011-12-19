@@ -10,6 +10,7 @@
 #import "CameraViewController.h"
 
 static bool show_fps = true;
+static bool online_learning = false;
 static float min_learn_value = 0.12;
 static float min_track_value = 0.05;
 static float min_scale_value = 0.1;
@@ -35,6 +36,7 @@ static int height_steps_value = 30;
 @synthesize height_steps = _height_steps;
 @synthesize num_features = _num_features;
 @synthesize num_trees = _num_trees;
+@synthesize onlineLearning = _onlineLearning;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -125,5 +127,10 @@ static int height_steps_value = 30;
 - (IBAction) numTrees:(UISlider*) sender {
     num_trees_value = sender.value;
     [CameraViewController setNumTrees: num_trees_value]; 
+}
+- (IBAction) onlineLearningButton:(UISwitch*)sender {
+    online_learning = !online_learning;
+    [CameraViewController toggleLearning];
+
 }
 @end

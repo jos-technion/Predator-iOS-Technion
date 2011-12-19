@@ -1,0 +1,105 @@
+\hypertarget{class_tld_detector}{\section{\-Tld\-Detector \-Class \-Reference}
+\label{class_tld_detector}\index{\-Tld\-Detector@{\-Tld\-Detector}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tld_detector_a4118c1097c07c4e63a50325231798475}{\-Tld\-Detector} (int frame\-Width, int frame\-Height, double $\ast$bb, \hyperlink{class_classifier}{\-Classifier} $\ast$classifier, int \-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S, int \-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S)
+\begin{DoxyCompactList}\small\item\em \-Constructor. \end{DoxyCompactList}\item 
+vector$<$ double $\ast$ $>$ $\ast$ \hyperlink{class_tld_detector_a99913cb396a77c6d4b373dcdf72e569c}{detect} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$frame, double $\ast$tbb)
+\begin{DoxyCompactList}\small\item\em \-Detects the object in the given frame. \end{DoxyCompactList}\item 
+\hypertarget{class_tld_detector_a53f059880d4574a0788bf2fe3ccca49d}{\hyperlink{class_tld_detector_a53f059880d4574a0788bf2fe3ccca49d}{$\sim$\-Tld\-Detector} ()}\label{class_tld_detector_a53f059880d4574a0788bf2fe3ccca49d}
+
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Static \-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+static double \hyperlink{class_tld_detector_af3b8e530904c7d36546f5ccc1f71de53}{bb\-Overlap} (double $\ast$bb1, double $\ast$bb2)
+\begin{DoxyCompactList}\small\item\em $\ast$ calculate the intersection between two bounding boxes as a percentage of their total area. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_tld_detector_a4118c1097c07c4e63a50325231798475}{\index{\-Tld\-Detector@{\-Tld\-Detector}!\-Tld\-Detector@{\-Tld\-Detector}}
+\index{\-Tld\-Detector@{\-Tld\-Detector}!TldDetector@{\-Tld\-Detector}}
+\subsubsection[{\-Tld\-Detector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Tld\-Detector\-::\-Tld\-Detector} (
+\begin{DoxyParamCaption}
+\item[{int}]{frame\-Width, }
+\item[{int}]{frame\-Height, }
+\item[{double $\ast$}]{bb, }
+\item[{{\bf \-Classifier} $\ast$}]{classifier, }
+\item[{int}]{\-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S, }
+\item[{int}]{\-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S}
+\end{DoxyParamCaption}
+)}}\label{class_tld_detector_a4118c1097c07c4e63a50325231798475}
+
+
+\-Constructor. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em frame\-Width} & width of the video stream frames \\
+\hline
+{\em frame\-Height} & height of the video stream frames \\
+\hline
+{\em bb} & array containing the trajectory bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+{\em classifier} & pointer to the classifier for the program \\
+\hline
+{\em \-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S} & number of iteration on the width \\
+\hline
+{\em \-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S} & number of iteration on the height \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_tld_detector_af3b8e530904c7d36546f5ccc1f71de53}{\index{\-Tld\-Detector@{\-Tld\-Detector}!bb\-Overlap@{bb\-Overlap}}
+\index{bb\-Overlap@{bb\-Overlap}!TldDetector@{\-Tld\-Detector}}
+\subsubsection[{bb\-Overlap}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Tld\-Detector\-::bb\-Overlap} (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{bb1, }
+\item[{double $\ast$}]{bb2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{class_tld_detector_af3b8e530904c7d36546f5ccc1f71de53}
+
+
+$\ast$ calculate the intersection between two bounding boxes as a percentage of their total area. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em bb1} & first bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+{\em bb2} & second bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the intersection between two bounding boxes as a percentage of their total area. 
+\end{DoxyReturn}
+\hypertarget{class_tld_detector_a99913cb396a77c6d4b373dcdf72e569c}{\index{\-Tld\-Detector@{\-Tld\-Detector}!detect@{detect}}
+\index{detect@{detect}!TldDetector@{\-Tld\-Detector}}
+\subsubsection[{detect}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ double $\ast$ $>$ $\ast$ {\bf \-Tld\-Detector\-::detect} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{frame, }
+\item[{double $\ast$}]{tbb}
+\end{DoxyParamCaption}
+)}}\label{class_tld_detector_a99913cb396a77c6d4b373dcdf72e569c}
+
+
+\-Detects the object in the given frame. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em frame} & current frame as an \hyperlink{class_tld_image}{\-Tld\-Image}; this is \-N\-O\-T freed \\
+\hline
+{\em tbb} & tracked bounding-\/box this frame \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pointer to a vector of bounding-\/box arrays each containing \mbox{[}x, y, width, height, confidence, overlapping\mbox{]} that are either positive, or negative and overlapping with the trajectory bounding-\/box. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Tld\-Detector.\-h\item 
+\-Tld\-Detector.\-cpp\end{DoxyCompactItemize}

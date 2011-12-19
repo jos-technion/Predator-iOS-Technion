@@ -42,6 +42,7 @@
 - (IBAction) btnclicked:(id) sender;
 
 + (void) toggleFps;
++ (void) toggleLearning;
 + (void) setMinLearn: (float) value;
 + (void) setMinTrack: (float) value;
 + (void) setMinScale: (float) value;

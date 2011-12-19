@@ -1,0 +1,102 @@
+\hypertarget{class_tld}{\section{\-Tld \-Class \-Reference}
+\label{class_tld}\index{\-Tld@{\-Tld}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tld_a786c1358f158721603171efa55bbed1d}{\-Tld} (int width, int height, unsigned char $\ast$frame, double $\ast$bb, int n\-T\-R\-E\-E\-S, int n\-F\-E\-A\-T, double \-M\-I\-N\-\_\-\-F\-E\-A\-T\-U\-R\-E\-\_\-\-S\-C\-A\-L\-E, double \-M\-A\-X\-\_\-\-F\-E\-A\-T\-U\-R\-E\-\_\-\-S\-C\-A\-L\-E, int \-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S, int \-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S, bool is\-\_\-video=false, bool blur=false)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+void \hyperlink{class_tld_a5602f2c4be63e6659a7c7b626b9e851e}{tld\-Process\-Frame} (int width, int height, unsigned char $\ast$\-New\-Image, double $\ast$ttbb, double $\ast$out\-Put, double \-M\-I\-N\-\_\-\-T\-R\-A\-C\-K\-I\-N\-G\-\_\-\-C\-O\-N\-F, double \-M\-I\-N\-\_\-\-R\-E\-I\-N\-I\-T\-\_\-\-C\-O\-N\-F, double \-M\-I\-N\-\_\-\-L\-E\-A\-R\-N\-I\-N\-G\-\_\-\-C\-O\-N\-F, bool blur=false, bool learning=true)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_tld_a786c1358f158721603171efa55bbed1d}{\index{\-Tld@{\-Tld}!\-Tld@{\-Tld}}
+\index{\-Tld@{\-Tld}!Tld@{\-Tld}}
+\subsubsection[{\-Tld}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Tld\-::\-Tld} (
+\begin{DoxyParamCaption}
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{unsigned char $\ast$}]{frame, }
+\item[{double $\ast$}]{bb, }
+\item[{int}]{n\-T\-R\-E\-E\-S, }
+\item[{int}]{n\-F\-E\-A\-T, }
+\item[{double}]{\-M\-I\-N\-\_\-\-F\-E\-A\-T\-U\-R\-E\-\_\-\-S\-C\-A\-L\-E, }
+\item[{double}]{\-M\-A\-X\-\_\-\-F\-E\-A\-T\-U\-R\-E\-\_\-\-S\-C\-A\-L\-E, }
+\item[{int}]{\-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S, }
+\item[{int}]{\-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S, }
+\item[{bool}]{is\-\_\-video = {\ttfamily false}, }
+\item[{bool}]{blur = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_tld_a786c1358f158721603171efa55bbed1d}
+
+
+constructor 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em width} & frame width \\
+\hline
+{\em height} & frame height \\
+\hline
+{\em frame} & the frame \\
+\hline
+{\em bb} & the bbox of the image \\
+\hline
+{\em n\-Trees} & number of trees \\
+\hline
+{\em n\-F\-E\-A\-T} & number of the features \\
+\hline
+{\em \-M\-I\-N\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S\-\_\-\-S\-C\-A\-L\-E} & the min features scale \\
+\hline
+{\em \-M\-A\-X\-\_\-\-F\-E\-A\-T\-U\-R\-E\-S\-\_\-\-S\-C\-A\-L\-E} & the maximum features scale \\
+\hline
+{\em \-W\-I\-D\-T\-H\-\_\-\-S\-T\-E\-P\-S} & width step \\
+\hline
+{\em \-H\-E\-I\-G\-H\-T\-\_\-\-S\-T\-E\-P\-S} & height step \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_tld_a5602f2c4be63e6659a7c7b626b9e851e}{\index{\-Tld@{\-Tld}!tld\-Process\-Frame@{tld\-Process\-Frame}}
+\index{tld\-Process\-Frame@{tld\-Process\-Frame}!Tld@{\-Tld}}
+\subsubsection[{tld\-Process\-Frame}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Tld\-::tld\-Process\-Frame} (
+\begin{DoxyParamCaption}
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{unsigned char $\ast$}]{\-New\-Image, }
+\item[{double $\ast$}]{ttbb, }
+\item[{double $\ast$}]{out\-Put, }
+\item[{double}]{\-M\-I\-N\-\_\-\-T\-R\-A\-C\-K\-I\-N\-G\-\_\-\-C\-O\-N\-F, }
+\item[{double}]{\-M\-I\-N\-\_\-\-R\-E\-I\-N\-I\-T\-\_\-\-C\-O\-N\-F, }
+\item[{double}]{\-M\-I\-N\-\_\-\-L\-E\-A\-R\-N\-I\-N\-G\-\_\-\-C\-O\-N\-F, }
+\item[{bool}]{blur = {\ttfamily false}, }
+\item[{bool}]{learning = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{class_tld_a5602f2c4be63e6659a7c7b626b9e851e}
+
+\begin{DoxyParams}{\-Parameters}
+{\em width} & frame width \\
+\hline
+{\em height} & frame height \\
+\hline
+{\em \-New\-Image} & the new image \\
+\hline
+{\em ttbb} & the traking bbox of the image \\
+\hline
+{\em \-M\-I\-N\-\_\-\-T\-R\-A\-C\-K\-I\-N\-G\-\_\-\-C\-O\-N\-F} & the min tracking confidence \\
+\hline
+{\em \-M\-I\-N\-\_\-\-R\-E\-I\-N\-I\-T\-\_\-\-C\-O\-N\-F} & minumum reinit confidence \\
+\hline
+{\em \-M\-I\-N\-\_\-\-L\-E\-A\-R\-N\-I\-N\-G\-\_\-\-C\-O\-N\-F} & minimum learning confidence \\
+\hline
+{\em blur} & if to to do blur for the image \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Tld.\-h\item 
+\-Tld.\-mm\end{DoxyCompactItemize}

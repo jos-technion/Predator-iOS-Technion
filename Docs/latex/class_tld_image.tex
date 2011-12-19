@@ -1,0 +1,102 @@
+\hypertarget{class_tld_image}{\section{\-Tld\-Image \-Class \-Reference}
+\label{class_tld_image}\index{\-Tld\-Image@{\-Tld\-Image}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_tld_image_a2d81efea2c69616960d5b030d842475d}{\-Tld\-Image} (void)
+\item 
+void \hyperlink{class_tld_image_a8884c4c71f01c9f34d401e7465822777}{create\-From\-Image} (unsigned char $\ast$img, int width, int height, bool blur=false)
+\begin{DoxyCompactList}\small\item\em \-Creates the image from unsigned char$\ast$ data. \end{DoxyCompactList}\item 
+void \hyperlink{class_tld_image_a8727b774600ad628e991c3c326148aef}{create\-Warp} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$image, double $\ast$bb, float $\ast$m)
+\begin{DoxyCompactList}\small\item\em creates an image from warp \end{DoxyCompactList}\item 
+\hypertarget{class_tld_image_a0bc1e16e93b27d15f135c02bc5479ee6}{int \hyperlink{class_tld_image_a0bc1e16e93b27d15f135c02bc5479ee6}{get\-Width} (void)}\label{class_tld_image_a0bc1e16e93b27d15f135c02bc5479ee6}
+
+\begin{DoxyCompactList}\small\item\em returns the width of the image \end{DoxyCompactList}\item 
+\hypertarget{class_tld_image_a554e2bdede2475a4ceff02162b48df62}{int \hyperlink{class_tld_image_a554e2bdede2475a4ceff02162b48df62}{get\-Height} (void)}\label{class_tld_image_a554e2bdede2475a4ceff02162b48df62}
+
+\begin{DoxyCompactList}\small\item\em returns the height of the iamge \end{DoxyCompactList}\item 
+\hypertarget{class_tld_image_ad19dace551432b972c17be5efabe8393}{unsigned char $\ast$ \hyperlink{class_tld_image_ad19dace551432b972c17be5efabe8393}{get\-Data} (void)}\label{class_tld_image_ad19dace551432b972c17be5efabe8393}
+
+\begin{DoxyCompactList}\small\item\em returns the image data \end{DoxyCompactList}\item 
+\hypertarget{class_tld_image_a8aba8a60891c75bdbcecf45e00302be3}{\hyperlink{class_tld_image_a8aba8a60891c75bdbcecf45e00302be3}{$\sim$\-Tld\-Image} (void)}\label{class_tld_image_a8aba8a60891c75bdbcecf45e00302be3}
+
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_tld_image_aaa5e8f16981f93134112740d246af688}{unsigned char $\ast$ \hyperlink{class_tld_image_aaa5e8f16981f93134112740d246af688}{data}}\label{class_tld_image_aaa5e8f16981f93134112740d246af688}
+
+\begin{DoxyCompactList}\small\item\em \-Image data as vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_tld_image_a54f49a4edd16643cc21e6313249f01b6}{void \hyperlink{class_tld_image_a54f49a4edd16643cc21e6313249f01b6}{set\-Data} (unsigned char $\ast$d)}\label{class_tld_image_a54f49a4edd16643cc21e6313249f01b6}
+
+\begin{DoxyCompactList}\small\item\em sets the image data to the data, notice that the array isn't copied! \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_tld_image_a2d81efea2c69616960d5b030d842475d}{\index{\-Tld\-Image@{\-Tld\-Image}!\-Tld\-Image@{\-Tld\-Image}}
+\index{\-Tld\-Image@{\-Tld\-Image}!TldImage@{\-Tld\-Image}}
+\subsubsection[{\-Tld\-Image}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Tld\-Image\-::\-Tld\-Image} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_tld_image_a2d81efea2c69616960d5b030d842475d}
+\-Constructor. 
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_tld_image_a8884c4c71f01c9f34d401e7465822777}{\index{\-Tld\-Image@{\-Tld\-Image}!create\-From\-Image@{create\-From\-Image}}
+\index{create\-From\-Image@{create\-From\-Image}!TldImage@{\-Tld\-Image}}
+\subsubsection[{create\-From\-Image}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Tld\-Image\-::create\-From\-Image} (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{img, }
+\item[{int}]{width, }
+\item[{int}]{height, }
+\item[{bool}]{blur = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}}\label{class_tld_image_a8884c4c71f01c9f34d401e7465822777}
+
+
+\-Creates the image from unsigned char$\ast$ data. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em img} & the image data in single dimention array \\
+\hline
+{\em width} & image width \\
+\hline
+{\em height} & image height \\
+\hline
+{\em blur} & wether to blur the image or not \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_tld_image_a8727b774600ad628e991c3c326148aef}{\index{\-Tld\-Image@{\-Tld\-Image}!create\-Warp@{create\-Warp}}
+\index{create\-Warp@{create\-Warp}!TldImage@{\-Tld\-Image}}
+\subsubsection[{create\-Warp}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Tld\-Image\-::create\-Warp} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{image, }
+\item[{double $\ast$}]{bb, }
+\item[{float $\ast$}]{m}
+\end{DoxyParamCaption}
+)}}\label{class_tld_image_a8727b774600ad628e991c3c326148aef}
+
+
+creates an image from warp 
+
+\-Instantiates this instance containing the contents of the bounding-\/box in the given image instance warped by the given matrix. 
+\begin{DoxyParams}{\-Parameters}
+{\em image} & image to create warp from \\
+\hline
+{\em bb} & bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+{\em m} & 2x2 transformation matrix (translation is added inside) \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Tld\-Image.\-h\item 
+\-Tld\-Image.\-cpp\end{DoxyCompactItemize}

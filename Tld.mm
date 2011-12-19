@@ -100,7 +100,7 @@ Tld::Tld(int width, int height, unsigned char* frame, double* bb, int nTREES, in
     return;
 }
 
-void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double * ttbb,double * outPut, double MIN_TRACKING_CONF, double MIN_REINIT_CONF, double MIN_LEARNING_CONF, bool blur) {
+void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double * ttbb,double * outPut, double MIN_TRACKING_CONF, double MIN_REINIT_CONF, double MIN_LEARNING_CONF, bool blur, bool learning) {
     
     
     IplImage *nextFrame = imageFromChar(NewImage, frameSize, frameWidth, frameHeight);
@@ -197,7 +197,6 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
     }
     printf("Detector best confidence: %lf - NCC: %lf\n",dbbMaxConf,dbb_conf);
     printf("Tracker best confidence: %lf - NCC: %lf\n",tbb[4],tbb_conf);
-    
     if (dbbMaxConf > MIN_REINIT_CONF && dbbMaxConf > tbb[4] && dbb_conf > (video ? 0.943 :0.95) && dbb_conf > tbb_conf) {
         delete tbb;
         tbb = new double[5];
@@ -207,20 +206,26 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
         tbb[2] = dbb[2];
         tbb[3] = dbb[3];
         tbb[4] = dbb[4];
-    } else if (tbb[4] > MIN_TRACKING_CONF && confidence > MIN_LEARNING_CONF && tbb_conf > (video ? 0.94 :0.97)) {
+    } else  if (tbb[4] > MIN_TRACKING_CONF && confidence > MIN_LEARNING_CONF && tbb_conf > (video ? 0.94 :0.94)) {
         for (int i = 0; i < dbbs->size(); i++) {
             
             double *dbb = dbbs->at(i);
             
             if (dbb[5] == 1 && nccs[i] > 0.91) {
-                printf("Learning positive patch!\n");
+                
+                if (learning) {
+                    printf("Learning positive patch!\n");
+                
                 classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 1);
+                }
             }
             else if (dbb[5] == 0 && nccs[i] < 0.999 ) {
-               // printf("Learning negative patch :(\n");
-               classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 0);
+                // printf("Learning negative patch :(\n");
+                if (learning)
+                classifier->train(nextFrameIntImg,  (int)dbb[0], (int)dbb[1], (int)dbb[2], (int)dbb[3], 0);
             }
         }
+        if (learning)
         classifier->train(nextFrameIntImg,  (int)tbb[0], (int)tbb[1], (int)tbb[2], (int)tbb[3], 1);
         
     } else {

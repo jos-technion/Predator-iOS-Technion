@@ -23,7 +23,7 @@ static float image_height;
 static float image_width;
 static double bbox[4];
 static double output_bbox[4];
-
+static bool learning = true;
 
 static int nTREES    = 15;
 static int nFEATS     = 13;
@@ -75,6 +75,7 @@ static void neon_asm_convert(uint8_t * __restrict dest, uint8_t * __restrict src
 
 @synthesize imageView = _imageView;
 @synthesize rect = _rect;
+@synthesize learningSwitch = _learningSwitch;
 
 PredatorViewController *mymainViewController;
 
@@ -195,8 +196,8 @@ PredatorViewController *mymainViewController;
         //convert to uiimage
         UIImage *img2= [UIImage imageWithCGImage:GrayImage scale:1.0 orientation:UIImageOrientationUp];
         [self.imageView setImage: img2];
-
-        tld2->tldProcessFrame(470, 310, baseAddressGray, bbox, output_bbox, MIN_TRACKING_CONF,  MIN_REINIT_CONF,  MIN_LEARNING_CONF, true);
+        printf("Sending: %d\n",learning);
+        tld2->tldProcessFrame(470, 310, baseAddressGray, bbox, output_bbox, MIN_TRACKING_CONF,  MIN_REINIT_CONF,  MIN_LEARNING_CONF, true, learning);
     
         bbox[0] = output_bbox[0];
         bbox[1] = output_bbox[1];
@@ -241,5 +242,7 @@ PredatorViewController *mymainViewController;
     }
     [super viewWillDisappear:animated];
 }
-
+-(IBAction) onlineLearning:(id)sender {
+    learning = !learning;
+}
 @end

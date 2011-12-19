@@ -23,7 +23,7 @@ static bool is_initialized = 0;
 static double bbox[4];
 static double output_bbox[4];
 static double screen[4];
-
+static bool learning = true;
 static int nTREES    = 10;
 static int nFEAT     = 13;
 
@@ -379,7 +379,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             }
         }
         [[NSInvocation invocationWithTarget:self.prevLayer selector:@selector(setHidden:) retainArguments:NO, YES] invokeOnMainThreadWaitUntilDone:NO];
-		tld->tldProcessFrame(image_width, image_height, frame, bbox, output_bbox, MIN_TRACKING_CONF, MIN_REINIT_CONF, MIN_LEARNING_CONF);
+		tld->tldProcessFrame(image_width, image_height, frame, bbox, output_bbox, MIN_TRACKING_CONF, MIN_REINIT_CONF, MIN_LEARNING_CONF,false,learning);
         
         
         bbox[0] = output_bbox[0];
@@ -523,6 +523,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     } else {
         show_fps = true;
     }
+}
++ (void) toggleLearning {
+    learning = !learning;
 }
 + (void) setMinLearn: (float) value {
     MIN_LEARNING_CONF = value;

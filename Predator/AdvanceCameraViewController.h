@@ -19,10 +19,12 @@
     IBOutlet UISlider *_height_steps;
     IBOutlet UISlider *_num_features;
     IBOutlet UISlider *_num_trees;
+    IBOutlet UISwitch *_onlineLearning;
 
 
 }
 @property (nonatomic,retain) UISwitch *fpsSwitch;
+@property (nonatomic,retain) UISwitch *onlineLearning;
 @property (nonatomic,retain) UISlider *min_learn;
 @property (nonatomic,retain) UISlider *min_track;
 @property (nonatomic,retain) UISlider *min_scale;
@@ -40,4 +42,5 @@
 - (IBAction) heightSteps:(id) sender;
 - (IBAction) numFeatures:(id) sender;
 - (IBAction) numTrees:(id) sender;
+- (IBAction) onlineLearningButton:(id) sender;
 @end

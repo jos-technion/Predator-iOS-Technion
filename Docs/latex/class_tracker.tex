@@ -1,0 +1,181 @@
+\hypertarget{class_tracker}{\section{\-Tracker \-Class \-Reference}
+\label{class_tracker}\index{\-Tracker@{\-Tracker}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_tracker_a030890322db8ac9961ff727dfa123b80}{norm\-Cross\-Correlation} (\-Ipl\-Image $\ast$img\-I, \-Ipl\-Image $\ast$img\-J, \-Cv\-Point2\-D32f $\ast$points0, \-Cv\-Point2\-D32f $\ast$points1, int n\-Pts, char $\ast$status, float $\ast$match, int winsize, int method)
+\begin{DoxyCompactList}\small\item\em \-Uses normalized cross correlation in order to test the correlation between the two supplied array of points on the two images. \end{DoxyCompactList}\item 
+void \hyperlink{class_tracker_a9fdbbdb33878ec07c2975608d3febe67}{euclidean\-Distance} (\-Cv\-Point2\-D32f $\ast$point1, \-Cv\-Point2\-D32f $\ast$point2, float $\ast$match, int n\-Pts)
+\begin{DoxyCompactList}\small\item\em \-Uses euclidena distance in order to test the distance between the two supplied array of points. \end{DoxyCompactList}\item 
+\hyperlink{class_tracker_a911919cd3f2f301e69dcdb1be165e8e8}{\-Tracker} (int frame\-Width, int frame\-Height, \-Cv\-Size $\ast$frame\-Size, \-Ipl\-Image $\ast$first\-Frame, \hyperlink{class_classifier}{\-Classifier} $\ast$classifier)
+\begin{DoxyCompactList}\small\item\em \-Constructor. \-Initialises the tracker. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_tracker_a930cc0528d9d0e53f6ba3d377e9875ad}{track} (\-Ipl\-Image $\ast$next\-Frame\-Ipl, \hyperlink{class_tld_image}{\-Tld\-Image} $\ast$next\-Frame, double $\ast$bb)
+\begin{DoxyCompactList}\small\item\em \-Tracks the region of the input frame indicated by the given bounding-\/box. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{class_tracker_a5e9981fd11b7b2fa91802c49ba65aa6a}{track\-With\-Backward} (\-Ipl\-Image $\ast$next\-Frame, \hyperlink{class_tld_image}{\-Tld\-Image} $\ast$next\-Frame\-Int\-Img, double $\ast$bb)
+\begin{DoxyCompactList}\small\item\em \-Tracks the region of the input frame indicated by the given bounding-\/box. \end{DoxyCompactList}\item 
+\hypertarget{class_tracker_a222f4de9cd39cd7c3046432807d9f22f}{void \hyperlink{class_tracker_a222f4de9cd39cd7c3046432807d9f22f}{set\-Prev\-Frame} (\-Ipl\-Image $\ast$frame)}\label{class_tracker_a222f4de9cd39cd7c3046432807d9f22f}
+
+\begin{DoxyCompactList}\small\item\em \-Setter for prev\-Frame (also frees the current value of prev\-Frame). \end{DoxyCompactList}\item 
+\hypertarget{class_tracker_a0ed1e23312cfe7fcfe5f2ac2abd69163}{\hyperlink{class_tracker_a0ed1e23312cfe7fcfe5f2ac2abd69163}{$\sim$\-Tracker} ()}\label{class_tracker_a0ed1e23312cfe7fcfe5f2ac2abd69163}
+
+\begin{DoxyCompactList}\small\item\em \-Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_tracker_a911919cd3f2f301e69dcdb1be165e8e8}{\index{\-Tracker@{\-Tracker}!\-Tracker@{\-Tracker}}
+\index{\-Tracker@{\-Tracker}!Tracker@{\-Tracker}}
+\subsubsection[{\-Tracker}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Tracker\-::\-Tracker} (
+\begin{DoxyParamCaption}
+\item[{int}]{frame\-Width, }
+\item[{int}]{frame\-Height, }
+\item[{\-Cv\-Size $\ast$}]{frame\-Size, }
+\item[{\-Ipl\-Image $\ast$}]{first\-Frame, }
+\item[{{\bf \-Classifier} $\ast$}]{classifier}
+\end{DoxyParamCaption}
+)}}\label{class_tracker_a911919cd3f2f301e69dcdb1be165e8e8}
+
+
+\-Constructor. \-Initialises the tracker. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em frame\-Width} & width of the video stream frames \\
+\hline
+{\em frame\-Height} & height of the video stream frames \\
+\hline
+{\em frame\-Size} & size of the video frame as a \-Cv\-Size object \\
+\hline
+{\em first\-Frame} & the first video stream frame \\
+\hline
+{\em classifier} & pointer to the classifier for the program \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_tracker_a9fdbbdb33878ec07c2975608d3febe67}{\index{\-Tracker@{\-Tracker}!euclidean\-Distance@{euclidean\-Distance}}
+\index{euclidean\-Distance@{euclidean\-Distance}!Tracker@{\-Tracker}}
+\subsubsection[{euclidean\-Distance}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Tracker\-::euclidean\-Distance} (
+\begin{DoxyParamCaption}
+\item[{\-Cv\-Point2\-D32f $\ast$}]{point1, }
+\item[{\-Cv\-Point2\-D32f $\ast$}]{point2, }
+\item[{float $\ast$}]{match, }
+\item[{int}]{n\-Pts}
+\end{DoxyParamCaption}
+)}}\label{class_tracker_a9fdbbdb33878ec07c2975608d3febe67}
+
+
+\-Uses euclidena distance in order to test the distance between the two supplied array of points. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em points0} & the first set of points \\
+\hline
+{\em point1} & the second set of points \\
+\hline
+{\em n\-Pts} & number of points \\
+\hline
+{\em match} & an output array will have the match percentage of each point \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_tracker_a030890322db8ac9961ff727dfa123b80}{\index{\-Tracker@{\-Tracker}!norm\-Cross\-Correlation@{norm\-Cross\-Correlation}}
+\index{norm\-Cross\-Correlation@{norm\-Cross\-Correlation}!Tracker@{\-Tracker}}
+\subsubsection[{norm\-Cross\-Correlation}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Tracker\-::norm\-Cross\-Correlation} (
+\begin{DoxyParamCaption}
+\item[{\-Ipl\-Image $\ast$}]{img\-I, }
+\item[{\-Ipl\-Image $\ast$}]{img\-J, }
+\item[{\-Cv\-Point2\-D32f $\ast$}]{points0, }
+\item[{\-Cv\-Point2\-D32f $\ast$}]{points1, }
+\item[{int}]{n\-Pts, }
+\item[{char $\ast$}]{status, }
+\item[{float $\ast$}]{match, }
+\item[{int}]{winsize, }
+\item[{int}]{method}
+\end{DoxyParamCaption}
+)}}\label{class_tracker_a030890322db8ac9961ff727dfa123b80}
+
+
+\-Uses normalized cross correlation in order to test the correlation between the two supplied array of points on the two images. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em img\-I} & the first image \\
+\hline
+{\em img\-J} & the second image \\
+\hline
+{\em points0} & the first set of points \\
+\hline
+{\em point1} & the second set of points \\
+\hline
+{\em n\-Pts} & number of points \\
+\hline
+{\em status} & status as got from \-L\-K \\
+\hline
+{\em match} & an output array will have the match percentage of each point \\
+\hline
+{\em winsize} & window size \\
+\hline
+{\em method} & method to do the \-N\-C\-C \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_tracker_a930cc0528d9d0e53f6ba3d377e9875ad}{\index{\-Tracker@{\-Tracker}!track@{track}}
+\index{track@{track}!Tracker@{\-Tracker}}
+\subsubsection[{track}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ {\bf \-Tracker\-::track} (
+\begin{DoxyParamCaption}
+\item[{\-Ipl\-Image $\ast$}]{next\-Frame\-Ipl, }
+\item[{{\bf \-Tld\-Image} $\ast$}]{next\-Frame, }
+\item[{double $\ast$}]{bb}
+\end{DoxyParamCaption}
+)}}\label{class_tracker_a930cc0528d9d0e53f6ba3d377e9875ad}
+
+
+\-Tracks the region of the input frame indicated by the given bounding-\/box. 
+
+1) \-Initialise uniformly distributed set of points over the previous frame's trajectory patch 2) \-Track these points using the \-Lucas-\/\-Kanade algorithm. 3) \-Set the bounding-\/box scale and position for the current frame based on the median scale and position changes of the remaining points
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em next\-Frame\-Ipl} & \-Ipl\-Image of the next frame to track \\
+\hline
+{\em next\-Frame} & next video stream frame \\
+\hline
+{\em bb} & array containing the trajectory bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns the estimated new bounding box \mbox{[}x, y, width, height, confidence\mbox{]}. 
+\end{DoxyReturn}
+\hypertarget{class_tracker_a5e9981fd11b7b2fa91802c49ba65aa6a}{\index{\-Tracker@{\-Tracker}!track\-With\-Backward@{track\-With\-Backward}}
+\index{track\-With\-Backward@{track\-With\-Backward}!Tracker@{\-Tracker}}
+\subsubsection[{track\-With\-Backward}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ {\bf \-Tracker\-::track\-With\-Backward} (
+\begin{DoxyParamCaption}
+\item[{\-Ipl\-Image $\ast$}]{next\-Frame, }
+\item[{{\bf \-Tld\-Image} $\ast$}]{next\-Frame\-Int\-Img, }
+\item[{double $\ast$}]{bb}
+\end{DoxyParamCaption}
+)}}\label{class_tracker_a5e9981fd11b7b2fa91802c49ba65aa6a}
+
+
+\-Tracks the region of the input frame indicated by the given bounding-\/box. 
+
+1) \-Initialise uniformly distributed set of points over the previous frame's trajectory patch 2) \-Track these points using the \-Lucas-\/\-Kanade algorithm 3) \-Estimate the tracking error of each point 4) \-Filter out the tracked points with greatest error (typically 50\% of points using \-N\-C\-C and \-E\-D) 5) \-Set the bounding-\/box scale and position for the current frame based on the median scale and position changes of the remaining points
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em next\-Frame\-Ipl} & \-Ipl\-Image of the next frame to track \\
+\hline
+{\em next\-Frame} & next video stream frame \\
+\hline
+{\em bb} & array containing the trajectory bounding-\/box \mbox{[}x, y, width, height\mbox{]} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Returns the estimated new bounding box \mbox{[}x, y, width, height, confidence\mbox{]}. 
+\end{DoxyReturn}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Tracker.\-h\item 
+\-Tracker.\-cpp\end{DoxyCompactItemize}

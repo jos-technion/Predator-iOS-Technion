@@ -44,7 +44,7 @@ public:
      \param  MIN_LEARNING_CONF minimum learning confidence
      \param blur if to to do blur for the image
      */
-    void tldProcessFrame(int width, int height, unsigned char* NewImage,double * ttbb,double * outPut, double MIN_TRACKING_CONF, double MIN_REINIT_CONF, double MIN_LEARNING_CONF, bool blur = false);
+    void tldProcessFrame(int width, int height, unsigned char* NewImage,double * ttbb,double * outPut, double MIN_TRACKING_CONF, double MIN_REINIT_CONF, double MIN_LEARNING_CONF, bool blur = false, bool learning = true);
 };
 
 #endif

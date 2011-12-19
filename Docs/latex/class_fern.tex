@@ -1,0 +1,79 @@
+\hypertarget{class_fern}{\section{\-Fern \-Class \-Reference}
+\label{class_fern}\index{\-Fern@{\-Fern}}
+}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_fern_a33643cce594fb91511dfcf7724d0fa8e}{{\bfseries \-Fern} (int node\-Num)}\label{class_fern_a33643cce594fb91511dfcf7724d0fa8e}
+
+\item 
+void \hyperlink{class_fern_a85beccaafe42daf4b1076f4a63796c79}{train} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$image, int patch\-X, int patch\-Y, int patch\-W, int patch\-H, int patch\-Class)
+\begin{DoxyCompactList}\small\item\em \-Trains this fern with a single training patch. \end{DoxyCompactList}\item 
+float \hyperlink{class_fern_a54f07af0756e0810d301a9024d903a31}{classify} (\hyperlink{class_tld_image}{\-Tld\-Image} $\ast$image, int patch\-X, int patch\-Y, int patch\-W, int patch\-H)
+\begin{DoxyCompactList}\small\item\em \-Classifies a given patch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_fern_a54f07af0756e0810d301a9024d903a31}{\index{\-Fern@{\-Fern}!classify@{classify}}
+\index{classify@{classify}!Fern@{\-Fern}}
+\subsubsection[{classify}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf \-Fern\-::classify} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{image, }
+\item[{int}]{patch\-X, }
+\item[{int}]{patch\-Y, }
+\item[{int}]{patch\-W, }
+\item[{int}]{patch\-H}
+\end{DoxyParamCaption}
+)}}\label{class_fern_a54f07af0756e0810d301a9024d903a31}
+
+
+\-Classifies a given patch. 
+
+\-Returns the posterior liklihood that the patch is positive. image\-: image to take the test patch from 
+\begin{DoxyParams}{\-Parameters}
+{\em patch\-X} & patch top-\/left x-\/position \\
+\hline
+{\em patch\-X} & patch top-\/left y-\/position \\
+\hline
+{\em patch\-W} & patch width \\
+\hline
+{\em patch\-H} & patch height \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_fern_a85beccaafe42daf4b1076f4a63796c79}{\index{\-Fern@{\-Fern}!train@{train}}
+\index{train@{train}!Fern@{\-Fern}}
+\subsubsection[{train}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Fern\-::train} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Tld\-Image} $\ast$}]{image, }
+\item[{int}]{patch\-X, }
+\item[{int}]{patch\-Y, }
+\item[{int}]{patch\-W, }
+\item[{int}]{patch\-H, }
+\item[{int}]{patch\-Class}
+\end{DoxyParamCaption}
+)}}\label{class_fern_a85beccaafe42daf4b1076f4a63796c79}
+
+
+\-Trains this fern with a single training patch. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em image} & image to take the training patch from \\
+\hline
+{\em patch\-X} & patch top-\/left x-\/position \\
+\hline
+{\em patch\-X} & patch top-\/left y-\/position \\
+\hline
+{\em patch\-W} & patch width \\
+\hline
+{\em patch\-H} & patch height \\
+\hline
+{\em patch\-Class} & 0 if the patch is negative, 1 if the patch is positive \\
+\hline
+\end{DoxyParams}
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-Fern.\-h\item 
+\-Fern.\-cpp\end{DoxyCompactItemize}

@@ -1,10 +1,20 @@
-  //
-//  Tld.mm
-//  Predator
+// Copyright 2011 Zdenek Kalal
 //
-//  Created by admin on 10/25/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+// This file is part of TLD.
+// 
+// TLD is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// TLD is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with TLD.  If not, see <http://www.gnu.org/licenses/>.
+
 
 
 #include "Tld.h"
@@ -197,7 +207,7 @@ void Tld::tldProcessFrame(int width, int height, unsigned char* NewImage,double 
     }
     printf("Detector best confidence: %lf - NCC: %lf\n",dbbMaxConf,dbb_conf);
     printf("Tracker best confidence: %lf - NCC: %lf\n",tbb[4],tbb_conf);
-    if (dbbMaxConf > MIN_REINIT_CONF && dbbMaxConf > tbb[4] && dbb_conf > (video ? 0.943 :0.95) && dbb_conf > tbb_conf) {
+    if (dbbMaxConf > MIN_REINIT_CONF && dbbMaxConf > tbb[4] && dbb_conf > (video ? 0.943 :0.949) && dbb_conf > tbb_conf) {
         delete tbb;
         tbb = new double[5];
         double *dbb = dbbs->at(dbbMaxConfIndex);
